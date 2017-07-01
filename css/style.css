@@ -10,8 +10,18 @@ body {
   display: none;
 }
 
+#page-header {
+  width: 50%;
+  height: 30px;
+  background-color: grey;
+  color: white;
+  padding: 5px 0 5px 0;
+  margin: auto;
+  margin-bottom: 10px;
+  text-align:center;
+}
+
 #page-container {
-  padding-top: 30px;
   width: 100%;
 }
 
