@@ -122,7 +122,7 @@ function gradeBoard() {
       rowCounter = 4;
     }
     if (rowCounter == -2) {
-      rowCounter = 0;
+      rowCounter = 9;
     }
     //console.log('rowCounter for i: ' + i + ' is ' + rowCounter);
     for (var r2 = 0; r2 < 3; r2++) {
@@ -157,7 +157,7 @@ function gradeBoard() {
       colCounter = 4;
     }
     if (colCounter == -2) {
-      colCounter = 0;
+      colCounter = 9;
     }
     //console.log('colCounter: ' + colCounter);
     for (var c2 = 0; c2 < 3; c2++) {
@@ -195,7 +195,7 @@ function gradeBoard() {
       }
       if (diaCounter == -2) {
       //console.log('found two same at ' + i + '. diag: ' + diag);
-        diaCounter = 0;
+        diaCounter = 9;
       }
       //console.log('diaCounter: ' + diaCounter);
       for (var d2 = 0; d2 < 3; d2++) {
