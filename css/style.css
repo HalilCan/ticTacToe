@@ -26,15 +26,28 @@ body {
 }
 
 .container {
-  width: 154px;
-  border: 1px solid black;
-  margin: auto;
+    width: 220px;
+    margin: auto;
+    border: 1px solid #605c5e;
+
+}
+
+table {
+    margin: auto;
+    padding: 5px 0 5px 0;
 }
 
 .box {
   display: inline-block;
-  padding: 20px;
+    padding: 25px;
+    font-size: 20px;
   border: 1px dotted grey;
+    text-align: center;
+}
+
+th {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .modal {
