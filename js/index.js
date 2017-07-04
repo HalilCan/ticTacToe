@@ -94,8 +94,18 @@ function gradeBoard() {
       result.innerHTML = ("It's a tie");
       openEndGame();
   }
-  //console.log('gb at beginning: ' + gb);
 
+  //Strategic grading here, prioritize centers and corners:
+  //corners
+  gb[0] = 0.1;
+  gb[2] = 0.1;
+  gb[6] = 0.1;
+  gb[8] = 0.1;
+  
+  //center
+  gb[4] = 1.1;
+  
+  
   for (var i = 0; i < 3; i++) {
     //Grade rows
     var rowStart = i * 3;
