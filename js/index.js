@@ -205,7 +205,7 @@ function gradeBoard() {
       }
       if (diaCounter == -2) {
       //console.log('found two same at ' + i + '. diag: ' + diag);
-        diaCounter = 9;
+        diaCounter = 19;
       }
       //console.log('diaCounter: ' + diaCounter);
       for (var d2 = 0; d2 < 3; d2++) {
