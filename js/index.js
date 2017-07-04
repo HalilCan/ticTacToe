@@ -94,17 +94,6 @@ function gradeBoard() {
       result.innerHTML = ("It's a tie");
       openEndGame();
   }
-
-  //Strategic grading here, prioritize centers and corners:
-  //corners
-  gb[0] = 0.1;
-  gb[2] = 0.1;
-  gb[6] = 0.1;
-  gb[8] = 0.1;
-  
-  //center
-  gb[4] = 1.1;
-  
   
   for (var i = 0; i < 3; i++) {
     //Grade rows
@@ -180,9 +169,10 @@ function gradeBoard() {
 
     //Grade diagonals
     if (i != 1) {
-      coords = [i, 4, 8 - i];
-      diag = [gb[i], gb[4], gb[8 - i]];
+      var coords = [i, 4, 8 - i];
+      var diag = [gb[i], gb[4], gb[8 - i]];
       if (isUniformArray(diag)) {
+        console.log('diag uniform array')
         if (gb[i] == 'C') {
           result.innerHTML = ('AI wins!');
         } else {
@@ -212,12 +202,11 @@ function gradeBoard() {
         if (Number.isInteger(diag[d2])) {
           diag[d2] = diag[d2] + diaCounter;
           gb[coords[d2]] += diaCounter;
-        //console.log('current addition from diaCounter= ' + diaCounter+ ' made to cell: ' + (coords[d2]) + ' which became ' + gb[coords[d2]]);
         }
       }
-    } //end of if
-  } //enD of big for
-    console.log(gb);
+    }
+  }
+  console.log(gb);
     return gb;
 }
 
@@ -233,8 +222,8 @@ function moveAI() {
   var gradedBoard = gradeBoard();
 
   //Move AI
-  maxVal = 0;
-  maxI = 0;
+  var maxVal = 0;
+  var maxI = 0;
   for (var i = 0; i < 9; i++) {
     if (Number.isInteger(gradedBoard[i]) && gradedBoard[i] >= maxVal) {
       maxVal = gradedBoard[i];
