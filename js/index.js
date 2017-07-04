@@ -123,12 +123,11 @@ function gradeBoard() {
     if (rowCounter == -2) {
       rowCounter = 9;
     }
-    //console.log('rowCounter for i: ' + i + ' is ' + rowCounter);
+    
     for (var r2 = 0; r2 < 3; r2++) {
       if (Number.isInteger(row[r2])) {
         row[r2] = row[r2] + rowCounter;
-        gb[rowStart + r2] += rowCounter; 
-        //console.log('current addition of rowCounter= ' + rowCounter+ ' made to cell: ' + (rowStart+r2) + ' which became ' + gb[rowStart + r2]);
+        gb[rowStart + r2] += rowCounter;
       }
     }
 
@@ -158,12 +157,11 @@ function gradeBoard() {
     if (colCounter == -2) {
       colCounter = 9;
     }
-    //console.log('colCounter: ' + colCounter);
+    
     for (var c2 = 0; c2 < 3; c2++) {
       if (Number.isInteger(col[c2])) {
         col[c2] = col[c2] + colCounter;
         gb[colStart + c2 * 3] += colCounter;
-        //console.log('current addition from colCounter= ' + colCounter+ ' made to cell: ' + (colStart + c2 * 3) + '=' + (gb[colStart+c2*3] - col[c2]) + ' which became ' + gb[colStart + c2 * 3]);
       }
     }
 
@@ -171,6 +169,7 @@ function gradeBoard() {
     if (i != 1) {
       var coords = [i, 4, 8 - i];
       var diag = [gb[i], gb[4], gb[8 - i]];
+      console.log(i + 'diag: ' + diag);
       if (isUniformArray(diag)) {
         console.log('diag uniform array')
         if (gb[i] == 'C') {
@@ -201,7 +200,11 @@ function gradeBoard() {
       for (var d2 = 0; d2 < 3; d2++) {
         if (Number.isInteger(diag[d2])) {
           diag[d2] = diag[d2] + diaCounter;
-          gb[coords[d2]] += diaCounter;
+          if (d2 == 1) {
+            gb[coords[d2]] += diaCounter + 1.1;
+          } else {
+            gb[coords[d2]] += diaCounter + 0.1;
+          }
         }
       }
     }
@@ -225,7 +228,9 @@ function moveAI() {
   var maxVal = 0;
   var maxI = 0;
   for (var i = 0; i < 9; i++) {
-    if (Number.isInteger(gradedBoard[i]) && gradedBoard[i] >= maxVal) {
+    console.log('current gb value= ' + gradedBoard[i]);
+    if (gradedBoard[i] >= maxVal) {
+      console.log ('old maxVal= ' + maxVal + ' new maxVal= ' + gradedBoard[i]);
       maxVal = gradedBoard[i];
       maxI = i;
     }
