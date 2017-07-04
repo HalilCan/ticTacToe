@@ -90,10 +90,6 @@ function gradeBoard() {
     }
   }
   var gb = gradedBoard;
-  if (isFullArray(gb)) {
-      result.innerHTML = ("It's a tie");
-      openEndGame();
-  }
   
   for (var i = 0; i < 3; i++) {
     //Grade rows
@@ -109,7 +105,7 @@ function gradeBoard() {
     }
     //console.log (i + '. row: ' + row);
     var rowCounter = 0;
-    for (var r1 = 0; r1 < 3; r1++) {
+    for (var r1 = 0; r1 < 3; r1 ++) {
       if (row[r1] == "C") {
         rowCounter -= 1;
       }
@@ -120,17 +116,17 @@ function gradeBoard() {
     if (rowCounter == 2) {
       rowCounter = 4;
     }
-    if (rowCounter == -2) {
+    if (rowCounter == - 2) {
       rowCounter = 9;
     }
-    
-    for (var r2 = 0; r2 < 3; r2++) {
+  
+    for (var r2 = 0; r2 < 3; r2 ++) {
       if (Number.isInteger(row[r2])) {
         row[r2] = row[r2] + rowCounter;
         gb[rowStart + r2] += rowCounter;
       }
     }
-
+  
     //Grade columns
     var colStart = i;
     col = [gb[colStart], gb[colStart + 3], gb[colStart + 6]];
@@ -143,7 +139,7 @@ function gradeBoard() {
       openEndGame();
     }
     var colCounter = 0;
-    for (var c1 = 0; c1 < 3; c1++) {
+    for (var c1 = 0; c1 < 3; c1 ++) {
       if (col[c1] == "C") {
         colCounter -= 1;
       }
@@ -154,17 +150,17 @@ function gradeBoard() {
     if (colCounter == 2) {
       colCounter = 4;
     }
-    if (colCounter == -2) {
+    if (colCounter == - 2) {
       colCounter = 9;
     }
-    
-    for (var c2 = 0; c2 < 3; c2++) {
+  
+    for (var c2 = 0; c2 < 3; c2 ++) {
       if (Number.isInteger(col[c2])) {
         col[c2] = col[c2] + colCounter;
         gb[colStart + c2 * 3] += colCounter;
       }
     }
-
+  
     //Grade diagonals
     if (i != 1) {
       var coords = [i, 4, 8 - i];
@@ -177,10 +173,10 @@ function gradeBoard() {
         } else {
           result.innerHTML = ('You win!');
         }
-      openEndGame();
-    }
+        openEndGame();
+      }
       var diaCounter = 0;
-      for (var d1 = 0; d1 < 3; d1++) {
+      for (var d1 = 0; d1 < 3; d1 ++) {
         if (diag[d1] == "C") {
           diaCounter -= 1;
         }
@@ -189,15 +185,15 @@ function gradeBoard() {
         }
       }
       if (diaCounter == 2) {
-      //console.og('found two same at ' + i + '. diag: ' + diag);
+        //console.og('found two same at ' + i + '. diag: ' + diag);
         diaCounter = 4;
       }
-      if (diaCounter == -2) {
-      //console.log('found two same at ' + i + '. diag: ' + diag);
+      if (diaCounter == - 2) {
+        //console.log('found two same at ' + i + '. diag: ' + diag);
         diaCounter = 19;
       }
       //console.log('diaCounter: ' + diaCounter);
-      for (var d2 = 0; d2 < 3; d2++) {
+      for (var d2 = 0; d2 < 3; d2 ++) {
         if (Number.isInteger(diag[d2])) {
           diag[d2] = diag[d2] + diaCounter;
           if (d2 == 1) {
@@ -210,7 +206,15 @@ function gradeBoard() {
     }
   }
   console.log(gb);
-    return gb;
+  checkTie(gb);
+  return gb;
+}
+
+function checkTie(gb) {
+  if (isFullArray(gb)) {
+    result.innerHTML = ("It's a tie");
+    openEndGame();
+  }
 }
 
 function aiCheck() {
@@ -255,6 +259,7 @@ function moveAI() {
   //}
   renderBoard();
   isPlayerTurn = true;
+  gradeBoard();
 }
 //</GAME LOGIC
 
